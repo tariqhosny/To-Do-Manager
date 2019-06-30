@@ -10,11 +10,14 @@ import UIKit
 
 class categoriesCell: UITableViewCell {
 
+    let colorFunc = UIViewController()
+    
     @IBOutlet weak var categoryColour: UIView!
     @IBOutlet weak var categoryName: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        colorFunc.circlView(selectedColorView: categoryColour)
         // Initialization code
     }
     
@@ -26,17 +29,7 @@ class categoriesCell: UITableViewCell {
     }
     func setCategoryData (categoryNode: Categories){
         categoryName.text = categoryNode.categoryName ?? ""
-        categoryColour.backgroundColor = uiColorFromHex(rgbValue: Int(categoryNode.categoryColour))
+        categoryColour.backgroundColor = colorFunc.uiColorFromHex(rgbValue: Int(categoryNode.categoryColour))
     }
     
-    func uiColorFromHex(rgbValue: Int) -> UIColor {
-        
-        let red =   CGFloat((rgbValue & 0xFF0000) >> 16) / 0xFF
-        let green = CGFloat((rgbValue & 0x00FF00) >> 8) / 0xFF
-        let blue =  CGFloat(rgbValue & 0x0000FF) / 0xFF
-        let alpha = CGFloat(1.0)
-        
-        return UIColor(red: red, green: green, blue: blue, alpha: alpha)
-    }
-
 }

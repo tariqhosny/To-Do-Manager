@@ -62,6 +62,7 @@ class newTaskViewController: UIViewController,UITableViewDelegate,UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoriesCell", for: indexPath) as! categoriesCell
         cell.setCategoryData(categoryNode: selectedCategory[indexPath.row])
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
